@@ -33,7 +33,6 @@ y_pos = windowHeight - root_height - custom_margin
 
 root.title("Formatify")
 root.wm_attributes("-topmost", 1)
-root.config(bg="skyblue")
 
 button_font = get_font('Arial', 11)
 preview_label_font = get_font('Helvetica', 14)
