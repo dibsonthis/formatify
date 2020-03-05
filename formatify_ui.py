@@ -39,6 +39,7 @@ left_frame = tk.Frame(root, width=200, height=400)
 left_frame.grid(row=0, column=0, padx=10, pady=5)
 
 right_frame = tk.Frame(root, width=300, height=200)
+right_frame.grid_propagate(0)
 right_frame.grid(row=0, column=1, padx=10, pady=5)
 
 function_buttons = tk.Frame(left_frame)
@@ -47,31 +48,31 @@ function_buttons.grid(row=0, column=0, padx=10, pady=5)
 button_font = get_font('Arial', 11)
 preview_label_font = get_font('Arial', 8)
 
-preview_label = tk.Label(right_frame, text="Preview Window", font=preview_label_font)
-preview_label.grid(row=0,column=0, sticky='nesw')
+preview_label = tk.Label(right_frame, text="Preview Window", font=preview_label_font, wraplength=200)
+preview_label.grid(row=0,column=0, sticky='nsew')
 
 upper = tk.Button(function_buttons, text="UPPERCASE", command= lambda: tk_modify('upper'), font=button_font)
-upper.grid(row=0, column=0, ipadx=5, pady=5)
+upper.grid(row=0, column=0, ipadx=5, pady=5, sticky='nsew')
 upper.bind("<Enter>", lambda event: on_enter(event, function='upper'))
 upper.bind("<Leave>", on_exit)
 
 lower = tk.Button(function_buttons, text="lowercase", command= lambda: tk_modify('lower'), font=button_font)
-lower.grid(row=0, column=1, ipadx=5, pady=5)
+lower.grid(row=1, column=0, ipadx=5, pady=5, sticky='nsew')
 lower.bind("<Enter>", lambda event: on_enter(event, function='lower'))
 lower.bind("<Leave>", on_exit)
 
 cap_all = tk.Button(function_buttons, text="Cap All", command= lambda: tk_modify('cap_all'), font=button_font)
-cap_all.grid(row=0, column=2, ipadx=7, pady=5)
+cap_all.grid(row=2, column=0, ipadx=7, pady=5, sticky='nsew')
 cap_all.bind("<Enter>", lambda event: on_enter(event, function='cap_all'))
 cap_all.bind("<Leave>", on_exit)
 
 snake_case = tk.Button(function_buttons, text="snake_case", command= lambda: tk_modify('snake_case'), font=button_font)
-snake_case.grid(row=1, column=0, ipadx=5, pady=5)
+snake_case.grid(row=3, column=0, ipadx=5, pady=5, sticky='nsew')
 snake_case.bind("<Enter>", lambda event: on_enter(event, function='snake_case'))
 snake_case.bind("<Leave>", on_exit)
 
 camel_case = tk.Button(function_buttons, text="CamelCase", command= lambda: tk_modify('camel_case'), font=button_font)
-camel_case.grid(row=2, column=0, ipadx=5, pady=5)
+camel_case.grid(row=4, column=0, ipadx=5, pady=5, sticky='nsew')
 camel_case.bind("<Enter>", lambda event: on_enter(event, function='camel_case'))
 camel_case.bind("<Leave>", on_exit)
 

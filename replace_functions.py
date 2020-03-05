@@ -159,9 +159,7 @@ def modify(modification, paste=True):
     time.sleep(0.1)
     print('copied text')
     data = get_clipboard_data()
-    print(data)
     modified_data = modifications[modification](data)
-    print(modified_data)
     copy_to_clipboard(modified_data)
     print('copied to clipboard')
     if paste == True:
