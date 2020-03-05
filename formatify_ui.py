@@ -35,20 +35,35 @@ root.title("Formatify")
 root.wm_attributes("-topmost", 1)
 root.config(bg="skyblue")
 
+button_font = get_font('Arial', 11)
+preview_label_font = get_font('Helvetica', 14)
+heading_font = get_font('Helvetica', 16, 'bold')
+
 left_frame = tk.Frame(root, width=200, height=400)
 left_frame.grid(row=0, column=0, padx=10, pady=5)
 
-right_frame = tk.Frame(root, width=300, height=200)
+right_frame = tk.Frame(root, width=400, height=300)
 right_frame.grid_propagate(0)
 right_frame.grid(row=0, column=1, padx=10, pady=5)
 
+top_right = tk.Frame(right_frame)
+top_right.grid(row=0, column=0, padx=10, pady=5, sticky="nsew")
+
+bottom_right = tk.Frame(right_frame)
+bottom_right.grid(row=1, column=0, padx=10, pady=5, sticky="nsew")
+bottom_right.grid_columnconfigure(0, minsize=380)
+bottom_right.grid_rowconfigure(0, minsize=250)
+
+function_window_label = tk.Label(left_frame, text="Functions", font=heading_font, bg='blue', fg='white')
+function_window_label.grid(row=0,column=0, sticky='nsew')
+
 function_buttons = tk.Frame(left_frame)
-function_buttons.grid(row=0, column=0, padx=10, pady=5)
+function_buttons.grid(row=1, column=0, padx=10, pady=5, sticky="nsew")
 
-button_font = get_font('Arial', 11)
-preview_label_font = get_font('Arial', 8)
+preview_window_label = tk.Label(top_right, text="Preview Window", font=heading_font)
+preview_window_label.grid(row=0,column=0, sticky='nsew')
 
-preview_label = tk.Label(right_frame, text="Preview Window", font=preview_label_font, wraplength=200)
+preview_label = tk.Label(bottom_right, font=preview_label_font, wraplength=350, justify='left', bg='black', fg='white')
 preview_label.grid(row=0,column=0, sticky='nsew')
 
 upper = tk.Button(function_buttons, text="UPPERCASE", command= lambda: tk_modify('upper'), font=button_font)
